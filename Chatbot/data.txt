@@ -1,0 +1,50 @@
+🌿 Sample Clinic Profile
+Clinic Name: Sunshine Health Care
+
+Location(s):
+
+Main Branch – 123 Wellness Street, Green Park, New Delhi
+
+Branch 2 – Sector 22, Gurgaon
+
+Branch 3 – Connaught Place, New Delhi
+
+Timings:
+
+Monday to Saturday: 8:00 AM – 8:00 PM
+
+Sunday: Emergency Services Only (10:00 AM – 4:00 PM)
+
+No. of Doctors: 12 (including general physicians and specialists)
+
+Specialties Available:
+
+General Medicine
+
+Pediatrics
+
+Cardiology
+
+Dermatology
+
+Orthopedics
+
+ENT (Ear, Nose, Throat)
+
+Facilities Offered:
+
+OPD Consultation
+
+Preventive Health Check-ups
+
+Diagnostic Lab (Pathology, X-Ray, Ultrasound)
+
+Pharmacy (24/7 for emergencies)
+
+Minor Procedures & Dressings
+
+Vaccination Services
+
+Emergency & First Aid Unit
+
+Contact: +91-9876543210 | info@sunshinehealthcare.in
