@@ -1,0 +1,28 @@
+The calculate_optical_flow function computes the optical flow between two consecutive frames using the Lucas-Kanade method. Here's a brief explanation:
+
+Input Parameters:
+
+old_gray: Grayscale representation of the previous frame.
+frame_gray: Grayscale representation of the current frame.
+angle_features: Feature points (typically corner points) in the previous frame for which optical flow needs to be calculated.
+Lucas-Kanade Parameters:
+
+lk_params: Dictionary containing parameters for the Lucas-Kanade optical flow method.
+winSize: Size of the window used for flow computation.
+maxLevel: The maximum level of the image pyramid.
+criteria: Termination criteria for the iterative optimization process.
+Optical Flow Computation:
+
+cv2.calcOpticalFlowPyrLK is used to compute the optical flow between the previous frame (old_gray) and the current frame (frame_gray) for the specified feature points (angle_features).
+nextPts: Computed new locations of the feature points in the current frame.
+status: Status array indicating whether the flow for each feature point has been found (1) or not (0).
+err: Error estimates for each feature point.
+Return Values:
+
+The function returns nextPts (new locations of feature points), status (status of each flow computation), and err (error estimates).
+In summary, the calculate_optical_flow function takes two consecutive grayscale frames along with feature points from the previous frame. It uses the Lucas-Kanade method to compute the optical flow, providing the new locations of feature points, status information, and error estimates. This optical flow information can be used for various applications such as motion tracking or analyzing the movement of objects between frames.
+
+
+
+
+

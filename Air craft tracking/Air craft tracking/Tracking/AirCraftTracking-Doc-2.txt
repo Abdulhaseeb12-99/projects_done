@@ -1,0 +1,18 @@
+The corner_detector function applies corner detection to a grayscale image using the Harris corner detection algorithm. Here's a brief explanation:
+
+Gaussian Blur:
+
+The input grayscale image (img_gray) is first smoothed using a Gaussian blur with a kernel size of (5, 5). This step helps reduce noise and prepares the image for more robust corner detection.
+Harris Corner Detection:
+
+The blurred image is then processed using the Harris corner detection algorithm. This algorithm identifies corners based on local intensity variations. Parameters like blockSize, ksize, and k control the sensitivity of the corner detection.
+Thresholding and Indexing:
+
+The corner response matrix (dst) is thresholded, and indices where the corner response is above a certain threshold (4% of the maximum corner response) are retained. These indices represent potential corner points.
+Index Filtering:
+
+To reduce redundancy, every 15th index is selected from the retained indices. The selected indices are stored in a list (true_indexes) to represent the coordinates of the detected corners.
+Conversion and Return:
+
+The final list of corner coordinates is converted into a NumPy array of type float32 before being returned by the function.
+In summary, the function takes a grayscale image, applies Gaussian blur, performs Harris corner detection, filters and reduces redundancy in the detected corner indices, and returns the final array of corner coordinates. The thresholding and filtering steps help identify prominent corners while minimizing noise and redundancy.
