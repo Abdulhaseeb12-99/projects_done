@@ -1,0 +1,26 @@
+# UI and core
+customtkinter>=5.2.1
+pandas>=2.2.0
+tk
+
+# LangChain ecosystem
+langchain>=0.1.16
+langchain-community>=0.0.35
+langchain-together>=0.0.3
+langchain-huggingface>=0.0.6
+
+# Embeddings
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+
+# PDF & DOCX parsing
+PyMuPDF>=1.22.3           # for PyPDFLoader backend
+unstructured[all-docs]    # for UnstructuredPDFLoader and DOCX loader
+pdf2image>=1.16.3
+pytesseract>=0.3.10
+
+# Protobuf fix for TensorFlow compatibility
+protobuf==3.20.*
+
+# Optional (if needed by langchain-together backend)
+requests>=2.31.0
