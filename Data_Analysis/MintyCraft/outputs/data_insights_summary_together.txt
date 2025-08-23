@@ -1,0 +1,5 @@
+Together.ai-Generated Summary:
+
+Based on the data provided, the top 5 companies with the highest ROI were all located in New York state, with an average ROI of 0.5106. California had the lowest ROI of 0.0905, with an average profit of $103,905.18. Florida had an average profit of $118,774.02, but its ROI was only 0.1194. Overall, New York and Florida were the top-performing states in terms of profit, while California had the lowest profit.
+
+Accuracy Score: 100.0%
