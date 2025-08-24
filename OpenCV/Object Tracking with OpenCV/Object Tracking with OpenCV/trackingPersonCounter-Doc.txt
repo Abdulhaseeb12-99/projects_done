@@ -1,0 +1,92 @@
+This Python script is an implementation of object tracking using a pre-trained deep learning model for face detection and a centroid tracking algorithm to track the detected faces. Let's break down the code and understand each part:
+
+1. **Importing Libraries:**
+   ```python
+   from pyimagesearch.centroidtracker import CentroidTracker
+   from imutils.video import VideoStream
+   import numpy as np
+   import imutils
+   import time
+   import cv2
+   ```
+   - Importing necessary libraries. `CentroidTracker` is a custom class for object tracking. `VideoStream` is used for capturing video frames efficiently. `numpy` is for numerical operations, `imutils` provides convenience functions for OpenCV, `time` for timing-related functions, and `cv2` is OpenCV for computer vision.
+
+2. **Setting Parameters:**
+   ```python
+   prototxt = "./deploy.prototxt"
+   model = "./res10_300x300_ssd_iter_140000.caffemodel"
+   confidence = 0.5
+   ```
+   - Manually setting the paths for the Caffe deploy prototxt file and the pre-trained model file. The `confidence` variable sets a threshold for face detections.
+
+3. **Initializing CentroidTracker and Frame Dimensions:**
+   ```python
+   ct = CentroidTracker()
+   (H, W) = (None, None)
+   ```
+   - Creating an instance of the `CentroidTracker` class for object tracking. `(H, W)` will store the frame dimensions.
+
+4. **Loading the Pre-trained Model:**
+   ```python
+   print("[INFO] loading model...")
+   net = cv2.dnn.readNetFromCaffe(prototxt, model)
+   ```
+   - Using OpenCV's deep neural network module (`cv2.dnn`) to load the pre-trained face detection model.
+
+5. **Initializing Video Stream:**
+   ```python
+   print("[INFO] starting video stream...")
+   vs = VideoStream(src=0).start()
+   time.sleep(2.0)
+   ```
+   - Starting the video stream using the default camera (`src=0`) and allowing it to warm up for 2 seconds.
+
+6. **Processing Video Frames:**
+   ```python
+   while True:
+       frame = vs.read()
+       frame = imutils.resize(frame, width=400)
+   ```
+   - Looping over video frames, reading each frame, and resizing it for efficiency.
+
+7. **Face Detection:**
+   ```python
+   blob = cv2.dnn.blobFromImage(frame, 1.0, (W, H), (104.0, 177.0, 123.0))
+   net.setInput(blob)
+   detections = net.forward()
+   rects = []
+   ```
+   - Creating a blob from the frame and passing it through the neural network for face detection. Detected faces' bounding box coordinates are stored in `rects`.
+
+8. **Updating Centroid Tracker:**
+   ```python
+   objects = ct.update(rects)
+   ```
+   - Updating the centroid tracker with the list of bounding box rectangles.
+
+9. **Drawing Bounding Boxes and Centroids:**
+   ```python
+   for (objectID, centroid) in objects.items():
+       text = "ID {}".format(objectID)
+       cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+       cv2.circle(frame, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
+   ```
+   - Looping over the tracked objects, drawing bounding boxes and centroids on the frame.
+
+10. **Displaying the Output Frame:**
+    ```python
+    cv2.imshow("Frame", frame)
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord("q"):
+        break
+    ```
+    - Displaying the output frame and checking for the 'q' key press to exit the loop.
+
+11. **Cleanup:**
+    ```python
+    cv2.destroyAllWindows()
+    vs.stop()
+    ```
+    - Closing the OpenCV windows and stopping the video stream.
+
+This script provides a simple real-time face tracking application using a webcam. It uses a pre-trained deep learning model for face detection and a centroid tracking algorithm to track and label the detected faces.
