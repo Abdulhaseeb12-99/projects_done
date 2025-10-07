@@ -7,8 +7,8 @@ import streamlit as st
 import requests
 
 
-TOGETHER_API_KEY = "7f1385f475c5c7a89ad25c1cf689cd64eaffa0a132e229a0bbf0455041cbe8cd" 
-TOGETHER_API_URL = "https://api.together.xyz/v1/chat/completions"
+TOGETHER_API_KEY = "Your_API_Key" 
+TOGETHER_API_URL = "Ypur_API_URL"
 MODEL_NAME = "mistralai/Mistral-7B-Instruct-v0.2"  
 
 def ask_togetherai(question: str, knowledge: str) -> str:
@@ -200,3 +200,4 @@ elif menu == "Enquiry":
             answer = ask_togetherai(user_q, knowledge)
             st.success("Answer:")
             st.write(answer)
+
